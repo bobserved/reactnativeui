@@ -18,7 +18,7 @@ export const BasicCard = ({...props, children }) => (
 
 const styles = {
   basicCard: {
-    width: deviceWidth * 0.9,
+    alignSelf: 'stretch',
     marginVertical: 8,
     padding: 12,
     borderWidth: 1,

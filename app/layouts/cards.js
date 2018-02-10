@@ -1,45 +1,45 @@
-import React, { Component } from 'react'
+// @flow
+
+import React from 'react'
 import {
   View,
   Text,
-  Dimensions
+  ScrollView
 } from 'react-native'
 import {
   BasicCard,
+  CardWithImage,
   BasicButton
 } from '../components'
 
 export const Cards = (props) => (
-  <View style={styles.container}>
+  <ScrollView style={{ flex: 1, backgroundColor: '#FFFFFF' }} contentContainerStyle={styles.container}>
     <Text style={styles.title}>Basic Card</Text>
-    <BasicCard
-      onClickHandler={() => null}
-      label='Click Me'
-      color='#59edad'
-      textColor='white'
-      width='full'
-    >
-      <Text style={styles.basicCardTitle}>Basic Card Title</Text>
+    <BasicCard>
+      <Text style={styles.cardTitle}>This is a Basic Card</Text>
+      <BasicCard>
+        <Text style={styles.cardTitle}>This is a Basic Card inside a Basic Card</Text>
+      </BasicCard>
     </BasicCard>
-  </View>
+    <CardWithImage
+      title='This is a Card With Image'
+      uri='https://images.unsplash.com/photo-1493847242172-d46053a1f671?ixlib=rb-0.3.5&s=22b33507bc597994d7ec32b2796d038b&auto=format&fit=crop&w=1350&q=80'
+    />
+  </ScrollView>
 )
 
-const deviceWidth = Dimensions.get('window').width
 const styles = {
   container: {
-    flex: 1,
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
-    paddingTop: 20
-  },
-  rowContainer: {
-    flexDirection: 'row'
+    padding: 12,
+    paddingTop: 20,
   },
   title: {
     fontSize: 18,
     marginTop: 12
   },
-  basicCardTitle: {
+  cardTitle: {
     fontSize: 18,
     color: '#c52155'
   }
