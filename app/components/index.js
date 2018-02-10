@@ -4,6 +4,7 @@ import { ButtonWithoutFeedback } from './button-without-feedback'
 import { RoundButton } from './round-button'
 import { BasicCard } from './basic-card'
 import { CardWithImage } from './card-with-image'
+import { TextField } from './text-field'
 
 export {
   BasicList,
@@ -11,5 +12,6 @@ export {
   ButtonWithoutFeedback,
   RoundButton,
   BasicCard,
-  CardWithImage
+  CardWithImage,
+  TextField
 }

@@ -24,8 +24,8 @@ export class Menu extends Component {
         },
         {
           id: 0,
-          name: 'Bobby 3',
-          route: 'Buttons'
+          name: 'Inputs',
+          route: 'Inputs'
         }
       ]
     }

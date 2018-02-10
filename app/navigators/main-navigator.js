@@ -4,7 +4,8 @@ import { StackNavigator, NavigationActions } from 'react-navigation'
 import {
   Menu,
   Buttons,
-  Cards
+  Cards,
+  Inputs
 } from '../layouts'
 
 const resetAction = (navigation, options) => {
@@ -25,7 +26,8 @@ export const MainNavigator = StackNavigator({
     screen: ({ navigation }) => <Menu navigation={navigation} screenProps={{ reset: (options) => resetAction(navigation, options) }} />
   },
   Buttons: { screen: Buttons },
-  Cards: { screen: Cards }
+  Cards: { screen: Cards },
+  Inputs: { screen: Inputs }
 }, {
   headerMode: "none"
 });
