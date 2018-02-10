@@ -10,9 +10,15 @@ import {
 
 const deviceWidth = Dimensions.get('window').width
 
-export const ButtonWithoutFeedback = ({...props, onClickHandler, label, color, textColor }) => (
+export const ButtonWithoutFeedback = ({...props, onClickHandler, label, color, textColor, width }) => (
   <TouchableWithoutFeedback onPress={onClickHandler}>
-    <View style={[styles.basicButton, { backgroundColor: color }]}>
+    <View
+      style={[
+        styles.basicButton,
+        styles[width],
+        { backgroundColor: color }
+      ]}
+    >
       <Text style={[styles.basicButtonLabel, { color: textColor }]}>{label}</Text>
     </View>
   </TouchableWithoutFeedback>
@@ -20,7 +26,6 @@ export const ButtonWithoutFeedback = ({...props, onClickHandler, label, color, t
 
 const styles = {
   basicButton: {
-    width: deviceWidth * 0.8,
     height: 48,
     alignItems: 'center',
     justifyContent: 'center',
@@ -29,5 +34,12 @@ const styles = {
   },
   basicButtonLabel: {
     fontSize: 24
+  },
+  full: {
+    width: deviceWidth * 0.8
+  },
+  auto: {
+    flexGrow: 1,
+    marginHorizontal: 8
   }
 }
