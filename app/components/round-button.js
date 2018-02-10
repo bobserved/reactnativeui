@@ -9,13 +9,9 @@ import {
 
 const deviceWidth = Dimensions.get('window').width
 
-export const BasicButton = ({...props, onClickHandler, label, color, textColor, width }) => (
+export const RoundButton = ({...props, onClickHandler, label, color, textColor }) => (
   <TouchableOpacity
-    style={[
-      styles.basicButton,
-      styles[width],
-      { backgroundColor: color }
-    ]}
+    style={[styles.basicButton, { backgroundColor: color }]}
     onPress={onClickHandler}
   >
     <Text style={[styles.basicButtonLabel, { color: textColor }]}>{label}</Text>
@@ -24,20 +20,14 @@ export const BasicButton = ({...props, onClickHandler, label, color, textColor, 
 
 const styles = {
   basicButton: {
-    height: 48,
+    width: deviceWidth * 0.15,
+    height: deviceWidth * 0.15,
+    borderRadius: deviceWidth * 0.075,
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 12,
-    borderRadius: 4
+    marginVertical: 12
   },
   basicButtonLabel: {
     fontSize: 24
-  },
-  full: {
-    width: deviceWidth * 0.8
-  },
-  auto: {
-    flexGrow: 1,
-    marginHorizontal: 8
   }
 }
