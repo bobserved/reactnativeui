@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import { StackNavigator, NavigationActions } from 'react-navigation'
-import { Menu } from '../layouts/menu'
+import { Menu, Buttons } from '../layouts'
 
 const resetAction = (navigation, options) => {
   const actionsArray = []
@@ -19,7 +19,8 @@ const resetAction = (navigation, options) => {
 export const MainNavigator = StackNavigator({
   Menu: {
     screen: ({ navigation }) => <Menu navigation={navigation} screenProps={{ reset: (options) => resetAction(navigation, options) }} />
-  }
+  },
+  Buttons: { screen: Buttons }
 }, {
   headerMode: "none"
 });

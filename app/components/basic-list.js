@@ -11,11 +11,12 @@ import {
 
 class BasicListItem extends React.PureComponent {
   render() {
+    const { item } = this.props
     return (
-      <TouchableOpacity onPress={() => null} activeOpacity={0.7}>
+      <TouchableOpacity onPress={() => this.props.onClickHandler(item.route)} activeOpacity={0.7}>
         <View style={styles.basicListItem}>
           <Text style={styles.basicListItemText}>
-            {this.props.item.name}
+            {item.name}
           </Text>
         </View>
       </TouchableOpacity>
@@ -24,25 +25,10 @@ class BasicListItem extends React.PureComponent {
 }
 
 export class BasicList extends React.Component {
-  state = {
-    data: [
-      {
-          id: 0,
-          name: 'Bobby 1'
-      },
-      {
-        id: 0,
-        name: 'Bobby 2'
-      },
-      {
-        id: 0,
-        name: 'Bobby 3'
-      }
-    ]
-  }
+  state = {}
   _keyExtractor = (item, index) => index.toString()
   _renderItem =({ item }) => (
-    <BasicListItem item={item} />
+    <BasicListItem item={item} onClickHandler={this.props.onClickHandler} />
   )
   _renderSeparator = () => (
     <View style={styles.basicListSeparator} />
@@ -51,7 +37,7 @@ export class BasicList extends React.Component {
     return (
       <FlatList
         contentContainerStyle={styles.basicList}
-        data={this.state.data}
+        data={this.props.data}
         onEndReached={() => console.log('hej')}
         onEndReachedThreshold={50}
         getItemLayout={(data, index) => (
