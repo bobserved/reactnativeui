@@ -59,7 +59,7 @@ const styles = {
     borderBottomWidth: 0
   },
   basicListItem: {
-    width: deviceWidth * 0.8,
+    width: deviceWidth * 0.9,
     height: 48,
     justifyContent: 'center',
     alignItems: 'center',
@@ -71,7 +71,7 @@ const styles = {
     fontSize: 24
   },
   basicListSeparator: {
-    height: 1,
+    height: 2,
     width: "100%",
     backgroundColor: "#CED0CE"
   }
