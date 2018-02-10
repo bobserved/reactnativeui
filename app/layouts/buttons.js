@@ -3,7 +3,10 @@ import {
   View,
   Dimensions
 } from 'react-native'
-import { BasicButton } from '../components'
+import {
+  BasicButton,
+  ButtonWithoutFeedback
+} from '../components'
 
 const { height } = Dimensions.get('window')
 
@@ -11,8 +14,14 @@ export const Buttons = (props) => (
   <View style={styles.container}>
     <BasicButton
       onClickHandler={() => null}
-      label='Button'
-      color='rebeccapurple'
+      label='Basic'
+      color='#59edad'
+      textColor='white'
+    />
+    <ButtonWithoutFeedback
+      onClickHandler={() => null}
+      label='Without Feedback'
+      color='#c52155'
       textColor='white'
     />
   </View>
@@ -21,6 +30,6 @@ const styles = {
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'blue'
+    backgroundColor: '#FFFFFF'
   }
 }
