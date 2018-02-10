@@ -45,7 +45,8 @@ export class Menu extends Component {
 const styles = {
   container: {
     flex: 1,
+    paddingTop: 20,
     alignItems: 'center',
-    backgroundColor: 'blue'
+    backgroundColor: '#59edad'
   }
 }

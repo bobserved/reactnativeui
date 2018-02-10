@@ -33,7 +33,7 @@ const styles = {
     padding: 12,
     borderWidth: 1,
     borderRadius: 2,
-    borderColor: '#d3eff1',
+    borderColor: '#c52155',
     flexWrap: 'nowrap',
     backgroundColor: '#fafafa',
     shadowColor: "#0c3289",

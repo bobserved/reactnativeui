@@ -19,11 +19,10 @@ export const BasicCard = ({...props, children }) => (
 const styles = {
   basicCard: {
     alignSelf: 'stretch',
-    marginVertical: 8,
     padding: 12,
     borderWidth: 1,
     borderRadius: 2,
-    borderColor: '#d3eff1',
+    borderColor: '#c52155',
     flexWrap: 'nowrap',
     backgroundColor: '#fafafa',
     shadowColor: "#0c3289",
