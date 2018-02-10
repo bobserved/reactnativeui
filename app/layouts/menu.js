@@ -10,12 +10,34 @@ const { height } = Dimensions.get('window')
 export class Menu extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      menuItems: [
+        {
+            id: 0,
+            name: 'Buttons',
+            route: 'Buttons'
+        },
+        {
+          id: 0,
+          name: 'Bobby 2',
+          route: 'Buttons'
+        },
+        {
+          id: 0,
+          name: 'Bobby 3',
+          route: 'Buttons'
+        }
+      ]
+    }
   }
+  handleListItemPress = (item) => this.props.navigation.navigate(item)
   render() {
     return (
       <View style={styles.container}>
-        <BasicList />
+        <BasicList
+          data={this.state.menuItems}
+          onClickHandler={this.handleListItemPress}
+        />
       </View>
     )
   }
@@ -23,6 +45,7 @@ export class Menu extends Component {
 const styles = {
   container: {
     flex: 1,
+    alignItems: 'center',
     backgroundColor: 'blue'
   }
 }
