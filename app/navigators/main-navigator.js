@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+import { Animated, Easing } from 'react-native'
 import { StackNavigator, NavigationActions } from 'react-navigation'
 import {
   Menu,
@@ -7,6 +8,7 @@ import {
   Cards,
   Inputs
 } from '../layouts'
+import { transitionConfig } from '../helper'
 
 const resetAction = (navigation, options) => {
   const actionsArray = []
@@ -27,7 +29,8 @@ export const MainNavigator = StackNavigator({
   },
   Buttons: { screen: Buttons },
   Cards: { screen: Cards },
-  Inputs: { screen: Inputs }
+  Inputs: { screen: Inputs },
 }, {
-  headerMode: "none"
+  headerMode: "none",
+  transitionConfig: () => transitionConfig(750, 'opacity', 'opacity')
 });
