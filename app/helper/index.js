@@ -10,24 +10,28 @@ const dismissKeyboard = () => (
   Keyboard.dismiss()
 )
 
-const getTransitions = (position, thisSceneIndex, width) => ({
+const getTransitions = (position, thisSceneIndex, width, height) => ({
   translateX: position.interpolate({
-    inputRange: [thisSceneIndex - 1, thisSceneIndex],
-    outputRange: [width, 0]
+    inputRange: [thisSceneIndex - 1, thisSceneIndex, thisSceneIndex + 1],
+    outputRange: [width, 0, 0]
+  }),
+  translateY: position.interpolate({
+    inputRange: [thisSceneIndex - 1, thisSceneIndex, thisSceneIndex + 1],
+    outputRange: [height, 0, 0]
   }),
   opacity: position.interpolate({
-    inputRange: [thisSceneIndex - 1, thisSceneIndex],
-    outputRange: [0, 1],
+    inputRange: [thisSceneIndex - 1, thisSceneIndex - 0.5, thisSceneIndex],
+    outputRange: [0, 1, 1],
   })
 })
 
-const getTransformObj = (value, transitionTypes) => {
+const getTransformObj = (transitionType, transitionTypes) => {
   const obj = {}
-  obj[value] = transitionTypes[value]
+  obj[transitionType] = transitionTypes[transitionType]
   return obj
 }
 
-const transitionConfig = (duration, property, value) => {
+const customTransitionConfig = (duration, property, transitionType) => {
   return {
     transitionSpec: {
       duration,
@@ -39,10 +43,19 @@ const transitionConfig = (duration, property, value) => {
       const { layout, position, scene } = sceneProps
       const thisSceneIndex = scene.index
       const width = layout.initWidth
-      const transitionTypes = getTransitions(position, thisSceneIndex, width)
+      const height = layout.initHeight
+      const transitionTypes = getTransitions(position, thisSceneIndex, width, height)
+      const transforms = []
       const transition = {}
       
-      transition[property] = property === TRANSITIONS.TRANSFORM ? [getTransformObj(value, transitionTypes)] : transitionTypes[value]
+      for(let i = 0; i < property.length; i++) {
+        if (property[i] === TRANSITIONS.TRANSFORM) {
+          transforms.push(getTransformObj(transitionType[i], transitionTypes))
+          transition[TRANSITIONS.TRANSFORM] = transforms
+        } else {
+          transition[property[i]] = transitionTypes[transitionType[i]]
+        }
+      }
 
       return transition
     }
@@ -51,5 +64,5 @@ const transitionConfig = (duration, property, value) => {
 
 export {
   dismissKeyboard,
-  transitionConfig
+  customTransitionConfig
 }

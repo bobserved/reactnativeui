@@ -8,7 +8,7 @@ import {
   Cards,
   Inputs
 } from '../layouts'
-import { transitionConfig } from '../helper'
+import { customTransitionConfig } from '../helper'
 
 const resetAction = (navigation, options) => {
   const actionsArray = []
@@ -32,5 +32,5 @@ export const MainNavigator = StackNavigator({
   Inputs: { screen: Inputs },
 }, {
   headerMode: "none",
-  transitionConfig: () => transitionConfig(750, 'opacity', 'opacity')
+  transitionConfig: () => customTransitionConfig(750, ['opacity', 'transform'], ['opacity', 'translateX'])
 });
